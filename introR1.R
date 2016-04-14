@@ -61,3 +61,27 @@ plot(min_day_infl)
 
 sd_day_infl <- apply(dat, 2, sd)
 plot(sd_day_infl)
+
+
+
+
+setwd("~/Desktop/software-carpentry-2016/data-files/r-lesson/data/")
+
+#build a fucntion that converts fahrenheit temps to Kelvin "return" gives the result
+fahr_to_kelvin <- function(temp) {
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+fahr_to_kelvin(32)
+
+
+#challenge- create a function
+
+best_practice <- c("Write", "programs", "for", "people", "not", "computers")
+asterisk <- "***"  # R interprets a variable with a single value as a vector
+fence <- function(original, wrapper) {
+  concat_string = c(wrapper, original, wrapper)
+  return(concat_string)
+}
+#use "original" and "wrapper" as a place holder, like X and Y. once outside of the function, those words are not stored as anything by R. 
+fence(best_practice, asterisk)
