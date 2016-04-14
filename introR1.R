@@ -85,3 +85,84 @@ fence <- function(original, wrapper) {
 }
 #use "original" and "wrapper" as a place holder, like X and Y. once outside of the function, those words are not stored as anything by R. 
 fence(best_practice, asterisk)
+
+
+
+list.files()
+
+
+analyze <- function(filename) {
+  # Plots the average, min, and max inflammation over time.
+  # Input is character string of a csv file.
+  
+  dat <- read.csv(file = filename, header = FALSE)
+  avg_day_inflammation <- apply(dat, 2, mean)
+  plot(avg_day_inflammation)
+  max_day_inflammation <- apply(dat, 2, max)
+  plot(max_day_inflammation)
+  min_day_inflammation <- apply(dat, 2, min)
+  plot(min_day_inflammation)
+}
+
+analyze("inflammation-01.csv")
+
+
+#for loops lesson
+
+best_practice <- c("let", "the", "computer", "do", "the", "work")
+best_practice
+
+print_words <- function(sentence) {
+  for (word in sentence){  #"in" is crucial, indicates that word is a unit of Sentence
+    print(word)
+  }
+}
+
+print_words(best_practice)
+print_words(best_practice[-6])
+  
+
+
+#general format of a for loop in R
+
+# for (variable in collection) {
+  #do things with the variable
+  #}  curly brackets define boundary of for loop in R
+
+len <- 0
+vowels <- c("a", "e", "i", "o", "u")
+  for (v in vowels) {
+    len <- len + 1
+  print(len)
+  }
+
+len
+v
+
+
+
+
+print_N <- function(natural_numbers) {
+  #function that prints natural_numbers, input is a number
+  for (number in seq(natural_numbers)) {  
+   print(number)
+ }
+}
+
+print_N(6)
+
+
+#loop through files analysis
+
+list.files()
+Sys.glob("*.csv")  # returns all files with that ending
+
+filenames <- Sys.glob("i*.csv")
+
+#run analysis on each file
+for (file in filenames){
+  print(file)
+  analyze(file)
+}
+
+
